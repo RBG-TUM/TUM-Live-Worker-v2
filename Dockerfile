@@ -8,7 +8,7 @@ RUN GO111MODULE=on go mod download
 ARG version=dev
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -ldflags "-w -extldflags '-static' -X main.VersionTag=${version}" -o /worker app/main/main.go
 
-FROM alpine:3.15
+FROM alpine:3.16.1
 
 RUN apk add --no-cache \
   ffmpeg=4.4.1-r2 \
