@@ -52,7 +52,7 @@ jobs:
         id: vars
         run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
       - name: Build and push Docker images (worker)
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v4
         with:
           context: .
           pull: true
@@ -61,7 +61,7 @@ jobs:
           tags: ${{ steps.metaworker.outputs.tags }}
           labels: ${{ steps.metaworker.outputs.labels }}
       - name: Build and push Docker images (nginx)
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v4
         with:
           context: ./nginx
           pull: true
@@ -70,7 +70,7 @@ jobs:
           tags: ${{ steps.metanginx.outputs.tags }}
           labels: ${{ steps.metanginx.outputs.labels }}
       - name: Build and push Docker images (edge)
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v4
         with:
           context: ./edge
           pull: true
